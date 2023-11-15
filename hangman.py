@@ -68,7 +68,7 @@ while wrong_attempts < 7:
 
             print("Correct guess!")
             print(display_hint)
-
+            
             # display wrong letter 
             print(hangman_graphics[wrong_attempts])
             # check if all letters have been guessed
