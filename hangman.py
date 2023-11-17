@@ -99,7 +99,7 @@ while game_continue:
                 # time limit reached
                 timeout_indicator = True
                 invalid_entry = False
-                print(f"Timeout: You need to guess a letter within {time_limit_per_turn} second(s) {time() - start_time}")
+                print(f"Timeout: You need to guess a letter within {time_limit_per_turn} second(s).")
                 
         # Checking the guessed letter if in choosen word
         if guess.lower() in choosen_word and timeout_indicator == False:
@@ -162,6 +162,7 @@ while game_continue:
         print("*********Game Results*********")
         for i_game_counter, i_choosen_word, i_turn, i_game_result in game_history:
             print(f"Round: {i_game_counter} Word: {i_choosen_word} Turns: {i_turn} Result: {i_game_result}")
+        print("******************************")    
         # End display game history
         # change game_continue = False to stop the loop
         game_continue = False
