@@ -19,7 +19,6 @@ display_hint = ""
 game_continue = True
 game_counter = 1
 time_limit_per_turn = 30
-continue_counting = True
 game_result = ""
 
 # function for displaying current state of the game. 

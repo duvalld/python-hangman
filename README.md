@@ -2,9 +2,9 @@
  The game challenges players to guess a word by suggesting letters within a limited number of attempts.
 
 Game Features:
-1. Game Mechanics:
+1. Game Mechanics: 
     - the game involves guessing the word letter by letter.
-    - For each incorrect guess, a part of a hangman figure is drawn. The goal is to guess the word before the entire hangman is drawn.
+    - For each incorrect guess, a part of a hangman figure is drawn. The goal is to guess the word before the entire hangman is drawn. 
 2. Word list and Phrases:
     - The game has a predefined list of words that can be chosen as the mystery word for each round.
     - There are victory phrases and death saying that are randomly displayed after winning or losing a game.
