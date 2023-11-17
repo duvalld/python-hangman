@@ -22,7 +22,7 @@ time_limit_per_turn = 30
 continue_counting = True
 game_result = ""
 
-# function for displaying attempts
+# function for displaying current state of the game. 
 def show_hint(correct_list, chooosen_word, wrong_list, wrong_count):
     # display the correct letter guess
     print("".join(letter.upper() if letter in correct_list else "_" for letter in chooosen_word))
@@ -120,7 +120,7 @@ while game_continue:
                     print("YOU WIN!")
                     game_result = "Win"
                     break
-        else: 
+        else:
             # wrong attempt condition. if through Time limit or wrong guess
             if timeout_indicator == True:
                 wrong_guesses.append("TO")
