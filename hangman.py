@@ -1,7 +1,6 @@
 from random import choice
 from time import sleep, time
 
-# TODO: Fix wrong attempt counter for display
 # List of words that can be played
 words = ["example", "love", "science", "python", "assignment"]
 # List of phrases that can be displayed after you win
