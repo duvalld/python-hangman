@@ -1,11 +1,12 @@
 from random import choice
 from time import sleep, time
 
-
+# TODO: Fix wrong attempt counter for display
 # List of words that can be played
 words = ["example", "love", "science", "python", "assignment"]
 # List of phrases that can be displayed after you win
-victory_phrase = ["Victory belongs to the most persevering", "You cannot expect victory and plan for defeat"]
+victory_phrase = ["Victory belongs to the most persevering",
+                  "You cannot expect victory and plan for defeat"]
 # List of phrases that can be displayed after you lose
 death_saying = ["Let the dead bury the dead", "HAHAHAHH! TALO"]
 
@@ -21,15 +22,20 @@ game_counter = 1
 time_limit_per_turn = 30
 game_result = ""
 
-# function for displaying current state of the game. 
+# function for displaying current state of the game.
+
+
 def show_hint(correct_list, chooosen_word, wrong_list, wrong_count):
     # display the correct letter guess
-    print("".join(letter.upper() if letter in correct_list else "_" for letter in chooosen_word))
+    print("".join(letter.upper()
+          if letter in correct_list else "_" for letter in chooosen_word))
     # display the hangman figure
     print(hangman_graphics[wrong_count])
     # display the incorrect guesses and number of incorrect guesses
     wrong_guesses_hint = " ".join(wrong_list)
-    print(f"incorrect guesses: {wrong_guesses_hint.upper()} ({len(wrong_list)})")
+    print(f"incorrect guesses: {
+          wrong_guesses_hint.upper()} ({len(wrong_list)})")
+
 
 # Strings representing hangman visuals for different attempts
 attempt0_string = "  _______\n |       |\n         |\n         |\n         |\n         |\n         |"
@@ -42,7 +48,8 @@ attempt6_string = "  _______\n |       |\n O       |\n/|\\      |\n |       |\n/
 attempt7_string = "  _______\n |       |\n 0       |\n/|\\      |\n |       |\n/ \\      |\n         |"
 
 # insert the hangman string visuals in a list to manager efficiently
-hangman_graphics = [attempt0_string, attempt1_string, attempt2_string, attempt3_string, attempt4_string, attempt5_string, attempt6_string, attempt7_string]
+hangman_graphics = [attempt0_string, attempt1_string, attempt2_string,
+                    attempt3_string, attempt4_string, attempt5_string, attempt6_string, attempt7_string]
 
 # Display Hangman welcome message
 for i in range(10):
@@ -69,10 +76,10 @@ while game_continue:
     # Game loop  until reaches attempt limit
     while wrong_attempts < 7:
         # turn counter
-        turns+=1
+        turns += 1
         # Display current turn number
         print(f"Turn: {turns}")
-    
+
         invalid_entry = True
         # continuously ask user for valid letter (single character alphabet only)
         timeout_indicator = False
@@ -88,7 +95,8 @@ while game_continue:
                 if len(guess) == 1:
                     # accept alphabet only condition
                     if guess.isalpha() == False:
-                        print("Invalid input: Please provide alphabetic characters only")
+                        print(
+                            "Invalid input: Please provide alphabetic characters only")
                     else:
                         # valid Entry
                         invalid_entry = False
@@ -98,21 +106,24 @@ while game_continue:
                 # time limit reached
                 timeout_indicator = True
                 invalid_entry = False
-                print(f"Timeout: You need to guess a letter within {time_limit_per_turn} second(s).")
-                
+                print(f"Timeout: You need to guess a letter within {
+                      time_limit_per_turn} second(s).")
+
         # Checking the guessed letter if in choosen word
         if guess.lower() in choosen_word and timeout_indicator == False:
             # Notify player if the letter is already been guessed
             if guess in correct_guesses:
                 print(f"You already guessed this letter. {guess}")
-                show_hint(correct_guesses, choosen_word, wrong_guesses, wrong_attempts)
+                show_hint(correct_guesses, choosen_word,
+                          wrong_guesses, wrong_attempts)
             else:
                 # add correct guesses to correct_guesses list
                 correct_guesses.append(guess)
                 # display hint if user guess is correct
                 print("Correct guess!")
-                show_hint(correct_guesses, choosen_word, wrong_guesses, wrong_attempts)
-                
+                show_hint(correct_guesses, choosen_word,
+                          wrong_guesses, wrong_attempts)
+
                 # check if all letter in correct_guesses list match with the mystery word
                 if all(letter in correct_guesses for letter in choosen_word):
                     print(choice(victory_phrase))
@@ -129,9 +140,10 @@ while game_continue:
                 # wrong guess message
                 print("Wrong guess!")
             # increase wrong_attempts counter by 1
-            wrong_attempts+=1
+            wrong_attempts += 1
             # display Correct Guesses
-            show_hint(correct_guesses, choosen_word, wrong_guesses, wrong_attempts)
+            show_hint(correct_guesses, choosen_word,
+                      wrong_guesses, wrong_attempts)
         # string divider per turn
         print("**************************************")
     else:
@@ -144,7 +156,7 @@ while game_continue:
     # display the mystery word
     print(f"The word is {choosen_word.upper()}")
     game_history.append([game_counter, choosen_word, turns, game_result])
-    
+
     # reset guess list for next game
     correct_guesses.clear()
     wrong_guesses.clear()
@@ -160,10 +172,13 @@ while game_continue:
         # Display game history
         print("*********Game Results*********")
         for i_game_counter, i_choosen_word, i_turn, i_game_result in game_history:
-            print(f"Round: {i_game_counter} Word: {i_choosen_word} Turns: {i_turn} Result: {i_game_result}")
-        print("******************************")    
+            print(f"Round: {i_game_counter} Word: {
+                  i_choosen_word} Turns: {i_turn} Result: {i_game_result}")
+        print("******************************")
         # End display game history
         # change game_continue = False to stop the loop
         game_continue = False
-    # reset the turn counter
+    # reset the turn counter and wrong attempts
+    wrong_attempts = 0
     turns = 0
+    
