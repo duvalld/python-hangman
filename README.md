@@ -20,4 +20,3 @@ Game Features:
 6. Game History
     - The game keeps track of the history, including all round number, the mystery word, number of turns to finish the game, and the result of each round (win / lose).
     - at the end of the game, the history is displayed, showing the result of each round.
-
